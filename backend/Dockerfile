@@ -46,7 +46,7 @@ RUN mkdir -p var/cache var/log var/sessions var/share \
 # Configuration Nginx
 RUN printf '%s\n' \
     'server {' \
-    '    listen 8080;' \
+    '    listen 3000;' \
     '    server_name _;' \
     '    root /app/public;' \
     '    index index.php;' \
@@ -66,7 +66,7 @@ RUN printf '%s\n' \
     '    }' \
     '}' > /etc/nginx/sites-available/default
 
-EXPOSE 8080
+EXPOSE 3000
 
 
-CMD ["sh", "-c", "mkdir -p var/cache var/log var/sessions var/share && chown -R www-data:www-data var && chmod -R 775 var && php bin/console doctrine:migrations:migrate --no-interaction --env=prod && sed -i \"s/listen 8080;/listen ${PORT:-8080};/\" /etc/nginx/sites-available/default && php-fpm -D && exec nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "mkdir -p var/cache var/log var/sessions var/share && chown -R www-data:www-data var && chmod -R 775 var && php bin/console doctrine:migrations:migrate --no-interaction --env=prod && sed -i \"s/listen 3000;/listen ${PORT:-3000};/\" /etc/nginx/sites-available/default && php-fpm -D && exec nginx -g 'daemon off;'"]
