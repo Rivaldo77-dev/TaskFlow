@@ -1,0 +1,20 @@
+# Symfony - fichiers sensibles
+/backend/.env
+/backend/.env.*
+!/backend/.env.example
+
+# Symfony - fichiers générés
+/backend/vendor/
+/backend/var/
+/backend/public/bundles/
+
+# React - fichiers générés
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.env*
+!/frontend/.env.example
+
+# Système et éditeurs
+.DS_Store
+.idea/
+.vscode/
