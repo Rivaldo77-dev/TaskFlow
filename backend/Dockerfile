@@ -69,4 +69,4 @@ RUN printf '%s\n' \
 EXPOSE 3000
 
 
-CMD ["sh", "-c", "mkdir -p var/cache var/log var/sessions var/share && chown -R www-data:www-data var && chmod -R 775 var && php bin/console doctrine:migrations:migrate --no-interaction --env=prod && sed -i \"s/listen 3000;/listen ${PORT:-3000};/\" /etc/nginx/sites-available/default && php-fpm -D && exec nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "mkdir -p var/cache var/log var/sessions var/share && chown -R www-data:www-data var && chmod -R 775 var && php bin/console doctrine:migrations:migrate --no-interaction --env=prod && chown -R www-data:www-data var && chmod -R 775 var && sed -i \"s/listen 3000;/listen ${PORT:-3000};/\" /etc/nginx/sites-available/default && php-fpm -D && exec nginx -g 'daemon off;'"]
